@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import speakerData from './data/speakers.json';
-import { Analytics } from "@vercel/analytics/react"
 import './App.css'
 
 const getNextUp = () => {
@@ -343,8 +342,6 @@ const App = () => {
             <FAQ />
 
             <Footer />
-
-            <Analytics />
         </div>
     );
 };
