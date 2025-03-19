@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VT Seva Career Compass//EN
+BEGIN:VEVENT
+SUMMARY:VT Seva Career Compass: Dr. Aparna
+DTSTART:20250329T170000Z
+DTEND:20250329T180000Z
+DESCRIPTION:Dr. Aparna is a Doctor at Healthcare Professional. Aparna will share insights on pursuing a medical career.
+LOCATION:https://umich.zoom.us/j/93759093817
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VT Seva Career Compass//EN
+BEGIN:VEVENT
+SUMMARY:VT Seva Career Compass: Sam Bloch
+DTSTART:20250327T180000Z
+DTEND:20250327T190000Z
+DESCRIPTION:Sam Bloch is a Program Manager at Google. Sam specializes in project management and leadership in tech.
+LOCATION:https://umich.zoom.us/j/99552294231
+END:VEVENT
+END:VCALENDAR

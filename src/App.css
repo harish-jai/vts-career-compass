@@ -71,9 +71,7 @@ h3 {
 
 .navbar-logo {
   height: 50px;
-  /* Adjust height as needed */
   margin-right: 1rem;
-  /* Space between logo and text */
 }
 
 .logo {
@@ -249,6 +247,7 @@ h3 {
   display: flex;
   gap: 0.5rem;
   white-space: nowrap;
+  align-items: center;
 }
 
 .next-up .join-link,
@@ -317,6 +316,11 @@ h3 {
   transition: transform 0.3s ease;
 }
 
+.highlight:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.05), rgba(0, 91, 187, 0.05));
+}
+
 /* Timeline Section */
 .timeline {
   max-width: var(--max-width);
@@ -360,19 +364,33 @@ h3 {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  align-items: center;
 }
 
-.join-button {
+.join-button,
+.join-link {
   padding: 0.5rem 1rem;
   border-radius: 25px;
   background: var(--primary-orange);
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
 }
 
-.join-button:hover {
+.join-button.disabled,
+.join-link.disabled {
+  background: var(--gray-400);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.join-button:hover:not(.disabled),
+.join-link:hover:not(.disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -388,9 +406,37 @@ h3 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
 .calendar-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 /* Filter Section */
@@ -432,7 +478,7 @@ h3 {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
   max-width: var(--max-width);
   margin: 0 auto;

@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VT Seva Career Compass//EN
+BEGIN:VEVENT
+SUMMARY:VT Seva Career Compass: Tom Maslyk
+DTSTART:20250329T150000Z
+DTEND:20250329T160000Z
+DESCRIPTION:Tom Maslyk is a Retired IT Executive at Ford. Tom brings decades of experience in IT leadership.
+LOCATION:https://umich.zoom.us/j/92795117245
+END:VEVENT
+END:VCALENDAR

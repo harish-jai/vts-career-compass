@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VT Seva Career Compass//EN
+BEGIN:VEVENT
+SUMMARY:VT Seva Career Compass: Akshath Mahajan
+DTSTART:20250401T190000Z
+DTEND:20250401T200000Z
+DESCRIPTION:Akshath Mahajan is a Investment Banker at Morgan Stanley. Akshath will discuss financial careers and banking insights.
+LOCATION:https://umich.zoom.us/j/98374252409
+END:VEVENT
+END:VCALENDAR

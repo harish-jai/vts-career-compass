@@ -14,6 +14,21 @@ const getNextUp = () => {
         .sort((a, b) => a.sessionDateTime - b.sessionDateTime)[0];
 };
 
+const isSessionActive = (date, time) => {
+    const sessionTime = new Date(`${date}T${time}`);
+    const now = new Date();
+    const thirtyMinsBefore = new Date(sessionTime.getTime() - (30 * 60 * 1000));
+    return now >= thirtyMinsBefore;
+};
+
+const formatTimeToLocal = (date, time) => {
+    const dateTime = new Date(`${date}T${time}`);
+    const timeString = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const tzAbbr = new Date().toLocaleTimeString('en-US', { timeZoneName: 'short' }).split(' ')[2];
+    return `${timeString} ${tzAbbr}`;
+};
+
 const CountdownTimer = ({ targetDate }) => {
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
 
@@ -44,9 +59,52 @@ const CountdownTimer = ({ targetDate }) => {
     );
 };
 
+const JoinButton = ({ session, className }) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+    const sessionTime = new Date(`${session.date}T${session.time}`);
+    const now = new Date();
+    const active = isSessionActive(session.date, session.time);
+    const isPast = now > sessionTime;
+
+    if (isPast) {
+        return null;
+    }
+
+    return (
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+            {active ? (
+                <a
+                    href={session.link}
+                    className={className}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Join
+                </a>
+            ) : (
+                <button
+                    className={`${className} disabled`}
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                    onClick={(e) => e.preventDefault()}
+                >
+                    Join
+                </button>
+            )}
+            {showTooltip && !active && (
+                <div className="tooltip">
+                    Check back 30 minutes before the session
+                </div>
+            )}
+        </div>
+    );
+};
+
 const NextUp = () => {
     const nextSpeaker = getNextUp();
     if (!nextSpeaker) return <p>No upcoming sessions.</p>;
+
+    const localTime = formatTimeToLocal(nextSpeaker.session.date, nextSpeaker.session.time);
 
     return (
         <div className="next-up">
@@ -54,10 +112,10 @@ const NextUp = () => {
                 <h2>Next: {nextSpeaker.name}</h2>
                 <p>{nextSpeaker.role} at {nextSpeaker.organization}</p>
             </div>
-            <p>📅 {nextSpeaker.session.date} | 🕒 {nextSpeaker.session.time}</p>
+            <p>📅 {nextSpeaker.session.date} | 🕒 {localTime}</p>
             <CountdownTimer targetDate={new Date(`${nextSpeaker.session.date}T${nextSpeaker.session.time}`)} />
             <div className="links">
-                <a href={nextSpeaker.session.link} className="join-link">Join</a>
+                <JoinButton session={nextSpeaker.session} className="join-link" />
                 <a href={nextSpeaker.session.addToCalendar} className="calendar-link">Calendar</a>
             </div>
         </div>
@@ -71,19 +129,22 @@ const SpeakerTimeline = ({ filter }) => {
 
     return (
         <div className="timeline">
-            {filteredSpeakers.map(speaker => (
-                <div key={speaker.name} className="speaker-card">
-                    <img src={speaker.image} alt={speaker.name} className="speaker-image" />
-                    <h3>{speaker.name}</h3>
-                    <h4>{speaker.role} at {speaker.organization}</h4>
-                    <p>{speaker.blurb}</p>
-                    <p>📅 {speaker.session.date} | 🕒 {speaker.session.time}</p>
-                    <div className="speaker-buttons">
-                        <a href={speaker.session.link} className="join-button">Join</a>
-                        <a href={speaker.session.addToCalendar} className="calendar-button">Add to Calendar</a>
+            {filteredSpeakers.map(speaker => {
+                const localTime = formatTimeToLocal(speaker.session.date, speaker.session.time);
+                return (
+                    <div key={speaker.name} className="speaker-card">
+                        <img src={speaker.image} alt={speaker.name} className="speaker-image" />
+                        <h3>{speaker.name}</h3>
+                        <h4>{speaker.role} at {speaker.organization}</h4>
+                        <p>{speaker.blurb}</p>
+                        <p>📅 {speaker.session.date} | 🕒 {localTime}</p>
+                        <div className="speaker-buttons">
+                            <JoinButton session={speaker.session} className="join-button" />
+                            <a href={speaker.session.addToCalendar} className="calendar-button">Add to Calendar</a>
+                        </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };
@@ -100,7 +161,7 @@ const HeroSection = () => (
             </p>
             <div className="hero-cta">
                 <button className="primary-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdHV62htVyRdhlXTzb2P9Duvp2MhXQApLRIk715QkZ-6tOwIQ/viewform', '_blank')}>Register Now</button>
-                <button className="secondary-btn" onClick={() => window.open('', '_blank')}>Add Series to Calendar</button>
+                <button className="secondary-btn" onClick={() => window.open('https://calendar.google.com/calendar/embed?src=d75ef5e4adf0fab18c4fb14c4dbe9bd41cba29b9baa4768d54ebcf9afc8755a4%40group.calendar.google.com&ctz=America%2FNew_York', '_blank')}>Add Series to Calendar</button>
             </div>
         </div>
     </section>
@@ -136,10 +197,24 @@ const OrganizingTeam = () => {
     const teamMembers = [
         {
             name: "Harish Jaisankar",
-            role: "Event Director",
+            role: "Event Director, National Volunteer Relations Coordinator",
             image: "/images/team/harish.png"
         },
-        // Add more team members here
+        {
+            name: "Mridula",
+            role: "Event Coordinator",
+            image: "/images/team/mridula.png"
+        },
+        {
+            name: "Riya Allamaneni",
+            role: "Event Coordinator",
+            image: "/images/team/riya.png"
+        },
+        {
+            name: "Arnav Mahajan",
+            role: "Event Coordinator",
+            image: "/images/team/arnav.png"
+        }
     ];
 
     return (
@@ -166,13 +241,20 @@ const FAQ = () => {
         },
         {
             question: "Are the sessions recorded?",
-            answer: "Yes, all sessions are recorded and shared with registered participants."
+            answer: "No, sessions will only be live."
         },
         {
             question: "Is there a cost to attend?",
             answer: "All sessions are completely free, courtesy of VT Seva."
         },
-        // Add more FAQs as needed
+        {
+            question: "Can I ask questions during the sessions?",
+            answer: "Yes, each session will include a Q&A segment with the speaker."
+        },
+        {
+            question: "Who can attend the webinars?",
+            answer: "The webinars are open to all students and professionals interested in the respective fields."
+        },
     ];
 
     return (
@@ -201,9 +283,10 @@ const Footer = () => (
             <div className="footer-section">
                 <h3>Follow Us</h3>
                 <div className="social-links">
-                    <a href="https://twitter.com/vtseva" target="_blank" rel="noopener noreferrer">Twitter</a>
-                    <a href="https://linkedin.com/company/vtseva" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://instagram.com/vtseva" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://x.com/vtseva" target="_blank" rel="noopener noreferrer">X</a>
+                    <a href="https://www.linkedin.com/company/vt-seva" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://tr.ee/EHMgV6l98Q" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/vtsworld" target="_blank" rel="noopener noreferrer">Facebook</a>
                 </div>
             </div>
             <div className="footer-section">
