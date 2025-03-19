@@ -1,0 +1,72 @@
+[
+    {
+      "name": "Sam Bloch",
+      "role": "Program Manager",
+      "organization": "Google",
+      "image": "/assets/sam_bloch.jpg",
+      "blurb": "Sam specializes in project management and leadership in tech.",
+      "category": "Software",
+      "session": {
+        "date": "2025-03-27",
+        "time": "18:00",
+        "link": "https://example.com/sam_bloch",
+        "addToCalendar": "https://calendar.google.com/event?action=TEMPLATE&text=Career+Compass+with+Sam+Bloch"
+      }
+    },
+    {
+      "name": "Tom Maslyk",
+      "role": "Retired IT Executive",
+      "organization": "Ford",
+      "image": "/assets/tom_maslyk.jpg",
+      "blurb": "Tom brings decades of experience in IT leadership.",
+      "category": "Software",
+      "session": {
+        "date": "2025-03-29",
+        "time": "15:00",
+        "link": "https://example.com/tom_maslyk",
+        "addToCalendar": "https://calendar.google.com/event?action=TEMPLATE&text=Career+Compass+with+Tom+Maslyk"
+      }
+    },
+    {
+      "name": "Dr. Aparna",
+      "role": "Doctor",
+      "organization": "Healthcare Professional",
+      "image": "/assets/aparna.jpg",
+      "blurb": "Aparna will share insights on pursuing a medical career.",
+      "category": "Medicine",
+      "session": {
+        "date": "2025-03-29",
+        "time": "17:00",
+        "link": "https://example.com/aparna",
+        "addToCalendar": "https://calendar.google.com/event?action=TEMPLATE&text=Career+Compass+with+Aparna"
+      }
+    },
+    {
+      "name": "Akshath Mahajan",
+      "role": "Investment Banker",
+      "organization": "Morgan Stanley",
+      "image": "/assets/akshath_mahajan.jpg",
+      "blurb": "Akshath will discuss financial careers and banking insights.",
+      "category": "Other",
+      "session": {
+        "date": "2025-04-01",
+        "time": "19:00",
+        "link": "https://example.com/akshath_mahajan",
+        "addToCalendar": "https://calendar.google.com/event?action=TEMPLATE&text=Career+Compass+with+Akshath+Mahajan"
+      }
+    },
+    {
+      "name": "Mike Prokic",
+      "role": "VP",
+      "organization": "Trinity Health",
+      "image": "/assets/mike_prokic.jpg",
+      "blurb": "Mike will discuss leadership in the healthcare industry.",
+      "category": "Medicine",
+      "session": {
+        "date": "2025-04-02",
+        "time": "17:00",
+        "link": "https://example.com/mike_prokic",
+        "addToCalendar": "https://calendar.google.com/event?action=TEMPLATE&text=Career+Compass+with+Mike+Prokic"
+      }
+    }
+]
