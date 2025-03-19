@@ -8,7 +8,7 @@ with open("speakers.json") as file:
 # Helper function to format date and time for calendar links
 def format_datetime(date, time):
     dt = datetime.strptime(f"{date} {time}", "%Y-%m-%d %H:%M")
-    return dt.strftime("%Y%m%dT%H%M%SZ")
+    return dt.strftime("%Y%m%dT%H%M%S")
 
 # Generate Google Calendar links and .ics content
 individual_ics = []

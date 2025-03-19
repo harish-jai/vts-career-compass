@@ -3,8 +3,8 @@ VERSION:2.0
 PRODID:-//VT Seva Career Compass//EN
 BEGIN:VEVENT
 SUMMARY:VT Seva Career Compass: Mike Prokic
-DTSTART:20250402T170000Z
-DTEND:20250402T180000Z
+DTSTART:20250402T170000
+DTEND:20250402T180000
 DESCRIPTION:Mike Prokic is a VP at Trinity Health. Mike will discuss leadership in the healthcare industry.
 LOCATION:https://umich.zoom.us/j/91518262140
 END:VEVENT

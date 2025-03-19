@@ -136,11 +136,11 @@ const SpeakerTimeline = ({ filter }) => {
                         <img src={speaker.image} alt={speaker.name} className="speaker-image" />
                         <h3>{speaker.name}</h3>
                         <h4>{speaker.role} at {speaker.organization}</h4>
+                        <h4>📅 {speaker.session.date} | 🕒 {localTime}</h4>
                         <p>{speaker.blurb}</p>
-                        <p>📅 {speaker.session.date} | 🕒 {localTime}</p>
                         <div className="speaker-buttons">
                             <JoinButton session={speaker.session} className="join-button" />
-                            <a href={speaker.session.addToCalendar} className="calendar-button">Add to Calendar</a>
+                            <a href={speaker.session.addToCalendar} className="calendar-button" target="_blank" rel="noopener noreferrer">Add to Calendar</a>
                         </div>
                     </div>
                 );
@@ -158,6 +158,7 @@ const HeroSection = () => (
             <p className="hero-description">
                 Join us for an inspiring series of webinars featuring industry leaders
                 sharing their career journeys and insights.
+                Sessions are on: 3/27, 3/29, 4/1, and 4/2.
             </p>
             <div className="hero-cta">
                 <button className="primary-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdHV62htVyRdhlXTzb2P9Duvp2MhXQApLRIk715QkZ-6tOwIQ/viewform', '_blank')}>Register Now</button>
@@ -287,12 +288,6 @@ const Footer = () => (
                     <a href="https://www.linkedin.com/company/vt-seva" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <a href="https://tr.ee/EHMgV6l98Q" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <a href="https://www.facebook.com/vtsworld" target="_blank" rel="noopener noreferrer">Facebook</a>
-                </div>
-            </div>
-            <div className="footer-section">
-                <h3>Our Partners</h3>
-                <div className="partner-logos">
-                    {/* Add partner logos here */}
                 </div>
             </div>
         </div>

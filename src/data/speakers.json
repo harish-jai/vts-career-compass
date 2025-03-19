@@ -1,72 +1,72 @@
 [
   {
-    "name": "Sam Bloch",
-    "role": "Program Manager",
-    "organization": "Google",
-    "image": "/images/speakers/sam_bloch.jpg",
-    "blurb": "Sam specializes in project management and leadership in tech.",
-    "category": "Software",
-    "session": {
-      "date": "2025-03-27",
-      "time": "18:00",
-      "link": "https://umich.zoom.us/j/99552294231",
-      "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Sam+Bloch&dates=20250327T180000Z/20250327T190000Z&details=Sam+Bloch+is+a+Program+Manager+at+Google.+Sam+specializes+in+project+management+and+leadership+in+tech.&location=https://umich.zoom.us/j/99552294231"
-    }
+      "name": "Sam Bloch",
+      "role": "Program Manager",
+      "organization": "Google",
+      "image": "/images/speakers/sam_bloch.jpg",
+      "blurb": "Sam specializes in project management and leadership in tech.",
+      "category": "Software",
+      "session": {
+          "date": "2025-03-27",
+          "time": "18:00",
+          "link": "https://umich.zoom.us/j/99552294231",
+          "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Sam+Bloch&dates=20250327T180000/20250327T190000&details=Sam+Bloch+is+a+Program+Manager+at+Google.+Sam+specializes+in+project+management+and+leadership+in+tech.&location=https://umich.zoom.us/j/99552294231"
+      }
   },
   {
-    "name": "Tom Maslyk",
-    "role": "Retired IT Executive",
-    "organization": "Ford",
-    "image": "/images/speakers/tom_maslyk.jpg",
-    "blurb": "Tom brings decades of experience in IT leadership.",
-    "category": "Software",
-    "session": {
-      "date": "2025-03-29",
-      "time": "15:00",
-      "link": "https://umich.zoom.us/j/92795117245",
-      "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Tom+Maslyk&dates=20250329T150000Z/20250329T160000Z&details=Tom+Maslyk+is+a+Retired+IT+Executive+at+Ford.+Tom+brings+decades+of+experience+in+IT+leadership.&location=https://umich.zoom.us/j/92795117245"
-    }
+      "name": "Tom Maslyk",
+      "role": "Retired IT Executive",
+      "organization": "Ford",
+      "image": "/images/speakers/tom_maslyk.jpg",
+      "blurb": "Tom brings decades of experience in IT leadership.",
+      "category": "Software",
+      "session": {
+          "date": "2025-03-29",
+          "time": "15:00",
+          "link": "https://umich.zoom.us/j/92795117245",
+          "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Tom+Maslyk&dates=20250329T150000/20250329T160000&details=Tom+Maslyk+is+a+Retired+IT+Executive+at+Ford.+Tom+brings+decades+of+experience+in+IT+leadership.&location=https://umich.zoom.us/j/92795117245"
+      }
   },
   {
-    "name": "Dr. Aparna",
-    "role": "Doctor",
-    "organization": "Healthcare Professional",
-    "image": "/images/speakers/aparna.jpg",
-    "blurb": "Aparna will share insights on pursuing a medical career.",
-    "category": "Medicine",
-    "session": {
-      "date": "2025-03-29",
-      "time": "17:00",
-      "link": "https://umich.zoom.us/j/93759093817",
-      "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Dr.+Aparna&dates=20250329T170000Z/20250329T180000Z&details=Dr.+Aparna+is+a+Doctor+at+Healthcare+Professional.+Aparna+will+share+insights+on+pursuing+a+medical+career.&location=https://umich.zoom.us/j/93759093817"
-    }
+      "name": "Dr. Aparna",
+      "role": "Doctor",
+      "organization": "Healthcare Professional",
+      "image": "/images/speakers/aparna.jpg",
+      "blurb": "Aparna will share insights on pursuing a medical career.",
+      "category": "Medicine",
+      "session": {
+          "date": "2025-03-29",
+          "time": "17:00",
+          "link": "https://umich.zoom.us/j/93759093817",
+          "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Dr.+Aparna&dates=20250329T170000/20250329T180000&details=Dr.+Aparna+is+a+Doctor+at+Healthcare+Professional.+Aparna+will+share+insights+on+pursuing+a+medical+career.&location=https://umich.zoom.us/j/93759093817"
+      }
   },
   {
-    "name": "Akshath Mahajan",
-    "role": "Investment Banker",
-    "organization": "Morgan Stanley",
-    "image": "/images/speakers/akshath_mahajan.jpg",
-    "blurb": "Akshath will discuss financial careers and banking insights.",
-    "category": "Other",
-    "session": {
-      "date": "2025-04-01",
-      "time": "19:00",
-      "link": "https://umich.zoom.us/j/98374252409",
-      "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Akshath+Mahajan&dates=20250401T190000Z/20250401T200000Z&details=Akshath+Mahajan+is+a+Investment+Banker+at+Morgan+Stanley.+Akshath+will+discuss+financial+careers+and+banking+insights.&location=https://umich.zoom.us/j/98374252409"
-    }
+      "name": "Akshath Mahajan",
+      "role": "Investment Banker",
+      "organization": "Morgan Stanley",
+      "image": "/images/speakers/akshath_mahajan.jpg",
+      "blurb": "Akshath will discuss financial careers and banking insights.",
+      "category": "Other",
+      "session": {
+          "date": "2025-04-01",
+          "time": "19:00",
+          "link": "https://umich.zoom.us/j/98374252409",
+          "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Akshath+Mahajan&dates=20250401T190000/20250401T200000&details=Akshath+Mahajan+is+a+Investment+Banker+at+Morgan+Stanley.+Akshath+will+discuss+financial+careers+and+banking+insights.&location=https://umich.zoom.us/j/98374252409"
+      }
   },
   {
-    "name": "Mike Prokic",
-    "role": "VP",
-    "organization": "Trinity Health",
-    "image": "/images/speakers/mike_prokic.jpg",
-    "blurb": "Mike will discuss leadership in the healthcare industry.",
-    "category": "Medicine",
-    "session": {
-      "date": "2025-04-02",
-      "time": "17:00",
-      "link": "https://umich.zoom.us/j/91518262140",
-      "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Mike+Prokic&dates=20250402T170000Z/20250402T180000Z&details=Mike+Prokic+is+a+VP+at+Trinity+Health.+Mike+will+discuss+leadership+in+the+healthcare+industry.&location=https://umich.zoom.us/j/91518262140"
-    }
+      "name": "Mike Prokic",
+      "role": "VP",
+      "organization": "Trinity Health",
+      "image": "/images/speakers/mike_prokic.jpg",
+      "blurb": "Mike will discuss leadership in the healthcare industry.",
+      "category": "Medicine",
+      "session": {
+          "date": "2025-04-02",
+          "time": "17:00",
+          "link": "https://umich.zoom.us/j/91518262140",
+          "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Mike+Prokic&dates=20250402T170000/20250402T180000&details=Mike+Prokic+is+a+VP+at+Trinity+Health.+Mike+will+discuss+leadership+in+the+healthcare+industry.&location=https://umich.zoom.us/j/91518262140"
+      }
   }
 ]
