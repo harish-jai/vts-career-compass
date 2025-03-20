@@ -17,8 +17,8 @@ const getNextUp = () => {
 const isSessionActive = (date, time) => {
     const sessionTime = new Date(`${date}T${time}`);
     const now = new Date();
-    const thirtyMinsBefore = new Date(sessionTime.getTime() - (30 * 60 * 1000));
-    return now >= thirtyMinsBefore;
+    const fifteenMinsBefore = new Date(sessionTime.getTime() - (15 * 60 * 1000));
+    return now >= fifteenMinsBefore;
 };
 
 const formatTimeToLocal = (date, time) => {
@@ -59,52 +59,60 @@ const CountdownTimer = ({ targetDate }) => {
     );
 };
 
-const JoinButton = ({ session, className }) => {
+const JoinButton = ({ session, className, speaker, openRSVPModal }) => {
     const [showTooltip, setShowTooltip] = useState(false);
     const sessionTime = new Date(`${session.date}T${session.time}`);
+    const sessionTimePlusHour = new Date(sessionTime.getTime() + (60 * 60 * 1000));
     const now = new Date();
     const active = isSessionActive(session.date, session.time);
-    const isPast = now > sessionTime;
+    const isPast = now > sessionTimePlusHour;
 
     if (isPast) {
         return null;
     }
 
+    if (active) {
+        return (
+            <a
+                href={session.link}
+                className={className}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Join
+            </a>
+        );
+    }
+
     return (
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-            {active ? (
-                <a
-                    href={session.link}
-                    className={className}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Join
-                </a>
-            ) : (
-                <button
-                    className={`${className} disabled`}
-                    onMouseEnter={() => setShowTooltip(true)}
-                    onMouseLeave={() => setShowTooltip(false)}
-                    onClick={(e) => e.preventDefault()}
-                >
-                    Join
-                </button>
-            )}
-            {showTooltip && !active && (
-                <div className="tooltip">
-                    Check back 30 minutes before the session
-                </div>
-            )}
-        </div>
+        <button
+            className={className}
+            onClick={() => openRSVPModal(speaker)}
+        >
+            RSVP
+        </button>
     );
 };
 
 const NextUp = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const nextSpeaker = getNextUp();
+
     if (!nextSpeaker) return <p>No upcoming sessions.</p>;
 
     const localTime = formatTimeToLocal(nextSpeaker.session.date, nextSpeaker.session.time);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleRSVPSubmit = async (formData) => {
+        console.log('RSVP submitted:', formData, 'for speaker:', nextSpeaker.name);
+    };
 
     return (
         <div className="next-up">
@@ -115,14 +123,50 @@ const NextUp = () => {
             <p>📅 {nextSpeaker.session.date} | 🕒 {localTime}</p>
             <CountdownTimer targetDate={new Date(`${nextSpeaker.session.date}T${nextSpeaker.session.time}`)} />
             <div className="links">
-                <JoinButton session={nextSpeaker.session} className="join-link" />
+                {isSessionActive(nextSpeaker.session.date, nextSpeaker.session.time) ? (
+                    <a href={nextSpeaker.session.link} className="join-link" target="_blank" rel="noopener noreferrer">
+                        Join
+                    </a>
+                ) : (
+                    <button className="rsvp-button" onClick={openModal}>
+                        RSVP
+                    </button>
+                )}
                 <a href={nextSpeaker.session.addToCalendar} className="calendar-link">Calendar</a>
             </div>
+
+            {isModalOpen && (
+                <RSVPModal
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    speaker={nextSpeaker}
+                    onSubmit={handleRSVPSubmit}
+                />
+            )}
         </div>
     );
 };
 
 const SpeakerTimeline = ({ filter }) => {
+    const [selectedSpeaker, setSelectedSpeaker] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = (speaker) => {
+        setSelectedSpeaker(speaker);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        // Reset selected speaker after a brief delay to allow closing animation
+        setTimeout(() => setSelectedSpeaker(null), 300);
+    };
+
+    const handleRSVPSubmit = async (formData) => {
+        // We don't need to implement this separately as the modal component handles submission
+        console.log('RSVP submitted:', formData, 'for speaker:', selectedSpeaker.name);
+    };
+
     const filteredSpeakers = speakerData.filter(speaker =>
         filter === 'All' || speaker.category === filter
     );
@@ -139,12 +183,26 @@ const SpeakerTimeline = ({ filter }) => {
                         <h4>📅 {speaker.session.date} | 🕒 {localTime}</h4>
                         <p>{speaker.blurb}</p>
                         <div className="speaker-buttons">
-                            <JoinButton session={speaker.session} className="join-button" />
+                            <JoinButton
+                                session={speaker.session}
+                                className="join-button"
+                                speaker={speaker}
+                                openRSVPModal={openModal}
+                            />
                             <a href={speaker.session.addToCalendar} className="calendar-button" target="_blank" rel="noopener noreferrer">Add to Calendar</a>
                         </div>
                     </div>
                 );
             })}
+
+            {selectedSpeaker && (
+                <RSVPModal
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    speaker={selectedSpeaker}
+                    onSubmit={handleRSVPSubmit}
+                />
+            )}
         </div>
     );
 };
@@ -292,6 +350,188 @@ const Footer = () => (
         </div>
     </footer>
 );
+
+const RSVPModal = ({ isOpen, onClose, speaker, onSubmit }) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        branch: '',
+        questions: '',
+        optIn: false
+    });
+    const [submitting, setSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(null);
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError(null);
+
+        try {
+            // Prepare the data with speaker information
+            const submissionData = {
+                ...formData,
+                speakerName: speaker.name,
+                sessionDate: `${speaker.session.date} ${speaker.session.time}`
+            };
+
+            // Use the proxy setting instead of hardcoded URL
+            const response = await fetch('/api/rsvp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(submissionData),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.error || 'Failed to submit RSVP');
+            }
+
+            // Call the onSubmit callback with the form data
+            onSubmit(formData);
+            setSuccess(true);
+        } catch (err) {
+            setError('There was an error submitting your RSVP. Please try again.');
+            console.error('RSVP submission error:', err);
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="modal-overlay">
+            <div className="modal-container">
+                <button className="modal-close" onClick={onClose}>×</button>
+
+                {!success ? (
+                    <>
+                        <h2>RSVP for {speaker.name}'s Session</h2>
+                        <p className="session-info">
+                            {speaker.session.date} at {formatTimeToLocal(speaker.session.date, speaker.session.time)}
+                        </p>
+
+                        <form onSubmit={handleSubmit} className="rsvp-form">
+                            <div className="form-group">
+                                <label htmlFor="name">Name *</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="email">Email *</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="phone">Phone Number (Optional)</label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="branch">VT Seva Branch *</label>
+                                <select
+                                    id="branch"
+                                    name="branch"
+                                    value={formData.branch}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="">Select a branch</option>
+                                    <option value="Atlanta">Atlanta</option>
+                                    <option value="Bay Area">Bay Area</option>
+                                    <option value="Boston">Boston</option>
+                                    <option value="Chicago">Chicago</option>
+                                    <option value="Detroit">Detroit</option>
+                                    <option value="Houston">Houston</option>
+                                    <option value="New Jersey">New Jersey</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="questions">Questions for the Speaker</label>
+                                <textarea
+                                    id="questions"
+                                    name="questions"
+                                    value={formData.questions}
+                                    onChange={handleChange}
+                                    rows="3"
+                                />
+                            </div>
+
+                            <div className="form-group checkbox">
+                                <input
+                                    type="checkbox"
+                                    id="optIn"
+                                    name="optIn"
+                                    checked={formData.optIn}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="optIn">Subscribe to VT Seva newsletters</label>
+                            </div>
+
+                            {error && <p className="error-message">{error}</p>}
+
+                            <button
+                                type="submit"
+                                className="submit-button"
+                                disabled={submitting}
+                            >
+                                {submitting ? 'Submitting...' : 'Submit RSVP'}
+                            </button>
+                        </form>
+                    </>
+                ) : (
+                    <div className="success-message">
+                        <h2>Thank You for Your RSVP!</h2>
+                        <p>You have successfully registered for {speaker.name}'s session.</p>
+                        <p>Make sure you add this event to your calendar!</p>
+                        <button
+                            className="close-button"
+                            onClick={onClose}
+                        >
+                            Close
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 const App = () => {
     const [filter, setFilter] = useState('All');
