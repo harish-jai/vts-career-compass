@@ -242,7 +242,7 @@ const AboutSection = () => (
             </div>
             <div className="highlight">
                 <h3>Various Tracks</h3>
-                <p>Software, Medicine, and More</p>
+                <p>Software, Medicine, & More</p>
             </div>
             <div className="highlight">
                 <h3>Interactive</h3>
