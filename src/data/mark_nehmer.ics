@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VT Seva Career Compass//EN
+BEGIN:VEVENT
+SUMMARY:VT Seva Career Compass: Mark Nehmer
+DTSTART:20250326T190000
+DTEND:20250326T200000
+DESCRIPTION:Mark Nehmer is a Deputy Chief Data & AI Officer at Defense Counterintelligence and Security Agency. Mark will discuss data science and AI in the public sector.
+LOCATION:https://umich.zoom.us/j/96970103074
+END:VEVENT
+END:VCALENDAR
