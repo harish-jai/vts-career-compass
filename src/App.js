@@ -161,7 +161,7 @@ const HeroSection = () => (
                 Sessions are on: 3/27, 3/29, 4/1, and 4/2.
             </p>
             <div className="hero-cta">
-                <button className="primary-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdHV62htVyRdhlXTzb2P9Duvp2MhXQApLRIk715QkZ-6tOwIQ/viewform', '_blank')}>Register Now</button>
+                <button className="primary-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdHV62htVyRdhlXTzb2P9Duvp2MhXQApLRIk715QkZ-6tOwIQ/viewform', '_blank')}>RSVP Now</button>
                 <button className="secondary-btn" onClick={() => window.open('https://calendar.google.com/calendar/embed?src=d75ef5e4adf0fab18c4fb14c4dbe9bd41cba29b9baa4768d54ebcf9afc8755a4%40group.calendar.google.com&ctz=America%2FNew_York', '_blank')}>Add Series to Calendar</button>
             </div>
         </div>
@@ -241,10 +241,6 @@ const FAQ = () => {
             answer: "You'll receive a unique link for each session after registration. Click the 'Join Session' button when it's time."
         },
         {
-            question: "Are the sessions recorded?",
-            answer: "No, sessions will only be live."
-        },
-        {
             question: "Is there a cost to attend?",
             answer: "All sessions are completely free, courtesy of VT Seva."
         },
@@ -254,7 +250,7 @@ const FAQ = () => {
         },
         {
             question: "Who can attend the webinars?",
-            answer: "The webinars are open to all students and professionals interested in the respective fields."
+            answer: "The webinars are open to all students, parents, and professionals interested in the respective fields."
         },
     ];
 
@@ -311,7 +307,7 @@ const App = () => {
                     <a href="#speakers">Speakers</a>
                     <a href="#team">Team</a>
                     <a href="#faq">FAQ</a>
-                    <button className="register-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdHV62htVyRdhlXTzb2P9Duvp2MhXQApLRIk715QkZ-6tOwIQ/viewform', '_blank')}>Register Now</button>
+                    <button className="register-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdHV62htVyRdhlXTzb2P9Duvp2MhXQApLRIk715QkZ-6tOwIQ/viewform', '_blank')}>RSVP Now</button>
                 </div>
             </nav>
 
