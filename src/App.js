@@ -260,19 +260,19 @@ const OrganizingTeam = () => {
             image: "/images/team/harish.png"
         },
         {
+            name: "Arnav Mahajan",
+            role: "Event Coordinator",
+            image: "/images/team/arnav.jpg"
+        },
+        {
             name: "Mridula",
             role: "Event Coordinator",
-            image: "/images/team/mridula.png"
+            // image: "/images/team/mridula.png"
         },
         {
             name: "Riya Allamaneni",
             role: "Event Coordinator",
-            image: "/images/team/riya.png"
-        },
-        {
-            name: "Arnav Mahajan",
-            role: "Event Coordinator",
-            image: "/images/team/arnav.png"
+            // image: "/images/team/riya.png"
         }
     ];
 
@@ -282,7 +282,9 @@ const OrganizingTeam = () => {
             <div className="team-grid">
                 {teamMembers.map(member => (
                     <div key={member.name} className="team-member">
-                        <img src={member.image} alt={member.name} />
+                        {member.image && (
+                            <img src={member.image} alt={member.name} />
+                        )}
                         <h3>{member.name}</h3>
                         <p>{member.role}</p>
                     </div>
@@ -472,13 +474,29 @@ const RSVPModal = ({ isOpen, onClose, speaker, onSubmit }) => {
                                 >
                                     <option value="">Select a branch</option>
                                     <option value="Atlanta">Atlanta</option>
+                                    <option value="Austin">Austin</option>
                                     <option value="Bay Area">Bay Area</option>
                                     <option value="Boston">Boston</option>
+                                    <option value="Cary">Cary</option>
+                                    <option value="Charlotte">Charlotte</option>
                                     <option value="Chicago">Chicago</option>
+                                    <option value="Cincinnati">Cincinnati</option>
+                                    <option value="Columbus">Columbus</option>
+                                    <option value="Connecticut">Connecticut</option>
+                                    <option value="Dallas">Dallas</option>
                                     <option value="Detroit">Detroit</option>
                                     <option value="Houston">Houston</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="Minneapolis">Minneapolis</option>
+                                    <option value="Nashville">Nashville</option>
                                     <option value="New Jersey">New Jersey</option>
-                                    <option value="Other">Other</option>
+                                    <option value="North Jersey">North Jersey</option>
+                                    <option value="Orlando">Orlando</option>
+                                    <option value="San Antonio">San Antonio</option>
+                                    <option value="Seattle">Seattle</option>
+                                    <option value="St. Louis">St. Louis</option>
+                                    <option value="Tampa">Tampa</option>
+                                    <option value="Virginia">Virginia</option>
                                 </select>
                             </div>
 
