@@ -583,7 +583,7 @@ const App = () => {
                     <button className={filter === 'All' ? 'active' : ''} onClick={() => setFilter('All')}>All</button>
                     <button className={filter === 'Software' ? 'active' : ''} onClick={() => setFilter('Software')}>Software</button>
                     <button className={filter === 'Medicine' ? 'active' : ''} onClick={() => setFilter('Medicine')}>Medicine</button>
-                    <button className={filter === 'Other' ? 'active' : ''} onClick={() => setFilter('Other')}>Other</button>
+                    <button className={filter === 'Finance' ? 'active' : ''} onClick={() => setFilter('Finance')}>Finance</button>
                 </div>
             </section>
 
