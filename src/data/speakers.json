@@ -42,10 +42,10 @@
         }
     },
     {
-        "name": "Dr. Aparna",
-        "role": "Doctor",
-        "organization": "Healthcare Professional",
-        "image": "/images/speakers/aparna.jpg",
+        "name": "Dr. Aparna Tamirisa, MD",
+        "role": "Internal Medicine Doctor",
+        "organization": "Slim Healthcare Associates",
+        "image": "/images/speakers/aparna_tamirisa.jpg",
         "blurb": "Aparna will share insights on pursuing a medical career.",
         "category": "Medicine",
         "session": {
