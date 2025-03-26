@@ -538,6 +538,7 @@ const RSVPModal = ({ isOpen, onClose, speaker, onSubmit }) => {
                         <h2>Thank You for Your RSVP!</h2>
                         <p>You have successfully registered for {speaker.name}'s session.</p>
                         <p>Make sure you add this event to your calendar!</p>
+                        <p>Check back here 15 minutes before the session for a join link!</p>
                         <button
                             className="close-button"
                             onClick={onClose}
