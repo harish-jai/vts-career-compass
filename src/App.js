@@ -265,9 +265,9 @@ const OrganizingTeam = () => {
             image: "/images/team/arnav.jpg"
         },
         {
-            name: "Mridula",
+            name: "Mridula Vasudevan",
             role: "Event Coordinator",
-            // image: "/images/team/mridula.png"
+            image: "/images/team/mridula.jpg"
         },
         {
             name: "Riya Allamaneni",
@@ -497,7 +497,20 @@ const RSVPModal = ({ isOpen, onClose, speaker, onSubmit }) => {
                                     <option value="St. Louis">St. Louis</option>
                                     <option value="Tampa">Tampa</option>
                                     <option value="Virginia">Virginia</option>
+                                    <option value="Other">Other</option>
+                                    <option value="custom">Other (Please specify)</option>
                                 </select>
+                                {formData.branch === 'custom' && (
+                                    <input
+                                        type="text"
+                                        id="customBranch"
+                                        name="customBranch"
+                                        placeholder="Enter your branch"
+                                        value={formData.customBranch || ''}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                )}
                             </div>
 
                             <div className="form-group">
