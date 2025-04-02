@@ -1,5 +1,19 @@
 [
     {
+        "name": "Mike Prokic",
+        "role": "VP",
+        "organization": "Trinity Health",
+        "image": "/images/speakers/mike_prokic.jpg",
+        "blurb": "Mike will discuss leadership in the healthcare industry.",
+        "category": "Medicine",
+        "session": {
+            "date": "2025-04-02",
+            "time": "17:00",
+            "link": "https://umich.zoom.us/j/91518262140",
+            "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Mike+Prokic&dates=20250402T170000/20250402T180000&details=Mike+Prokic+is+a+VP+at+Trinity+Health.+Mike+will+discuss+leadership+in+the+healthcare+industry.&location=https://umich.zoom.us/j/91518262140"
+        }
+    },
+    {
         "name": "Mark Nehmer",
         "role": "Deputy Chief Data & AI Officer",
         "organization": "Defense Counterintelligence and Security Agency",
@@ -67,20 +81,6 @@
             "time": "19:00",
             "link": "https://umich.zoom.us/j/98374252409",
             "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Akshath+Mahajan&dates=20250401T190000/20250401T200000&details=Akshath+Mahajan+is+a+Investment+Banker+at+Morgan+Stanley.+Akshath+will+discuss+financial+careers+and+banking+insights.&location=https://umich.zoom.us/j/98374252409"
-        }
-    },
-    {
-        "name": "Mike Prokic",
-        "role": "VP",
-        "organization": "Trinity Health",
-        "image": "/images/speakers/mike_prokic.jpg",
-        "blurb": "Mike will discuss leadership in the healthcare industry.",
-        "category": "Medicine",
-        "session": {
-            "date": "2025-04-02",
-            "time": "17:00",
-            "link": "https://umich.zoom.us/j/91518262140",
-            "addToCalendar": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=VT+Seva+Career+Compass:+Mike+Prokic&dates=20250402T170000/20250402T180000&details=Mike+Prokic+is+a+VP+at+Trinity+Health.+Mike+will+discuss+leadership+in+the+healthcare+industry.&location=https://umich.zoom.us/j/91518262140"
         }
     }
 ]
