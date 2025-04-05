@@ -350,6 +350,7 @@ h3 {
 
 .speaker-card:hover {
   transform: translateY(-5px);
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.05), rgba(0, 91, 187, 0.05));
 }
 
 .speaker-image {
