@@ -272,7 +272,7 @@ const OrganizingTeam = () => {
         {
             name: "Riya Allamaneni",
             role: "Event Coordinator",
-            // image: "/images/team/riya.png"
+            image: "/images/team/riya.jpg"
         }
     ];
 
